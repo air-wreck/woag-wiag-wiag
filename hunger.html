@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hunger Games</title>
+</head>
+<body>
+<style>	
+	#start {
+		padding-left:1%;
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:5;
+		background-color:white;
+	}
+	
+	#names {
+		padding-left:1%;
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:4;
+		background-color:white;
+	}
+	
+	#stats {
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		text-align:center;
+		z-index:3;
+		background-color:white;
+	}
+	
+	#day {
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		text-align:center;
+		z-index:1;
+		background-color:white;
+	}
+	
+	#corn {
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		text-align:center;
+		z-index:2;
+		background-color:white;
+	}
+	
+	#deaths {
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		text-align:center;
+		z-index:0;
+		background-color:white;
+		visibility:hidden;
+	}
+	
+</style>
+<div id="start">
+<h1 id="heading">Welcome to the Hunger Games</h1>
+<label>How many participants?
+<input id="wow" type="text"/>
+</label>
+<br>
+<label>Two champions allowed?
+<input id="double" type="checkbox"/>
+</label>
+<br>
+<br>
+<button id="button" type="button">Confirm</button>
+</div>
+
+<div id="names">
+<h1>Champion Names</h1>
+<button id="confirmNames" type="button">Confirm Names</button>
+</div>
+
+<div id="stats">
+<h1>The Champions</h1>
+<button id="proceedOne" type="button">Proceed</button>
+</div>
+
+<div id="day">
+<h2 id="dayNum">Day </h2>
+<button id="proceedTwo" type="button">Proceed</button>
+</div>
+
+<div id="corn">
+<h2>The Bloodbath</h2>
+<button id = "proceedThree" type="button">Proceed</button>
+</div>
+
+<div id="deaths">
+<h2 id="cannon"> cannon shots can be heard in the distance</h2>
+<h2>The following tributes have fallen:</h2>
+<button id="proceedFour" type="button">Proceed</button>
+</div>
+
+<script>
+	var first = document.getElementById("start");
+	//var num = document.getElementById("wow");
+	var wow = document.getElementById("double");
+	var press = document.getElementById("button");
+	var stats = document.getElementById("stats");
+	var names = document.getElementById("names");
+	var mult, num;
+	var allNames = [];
+	var deathBools = [];
+	var summary = [];
+	var kills = [];
+	var alreadyDead = [];
+	var day = document.getElementById("day");
+	//var night = document.getElementById("night");
+	var dayCounter = 0;
+	var corn = document.getElementById("corn");
+	var deaths = document.getElementById("deaths");
+	var numDeaths = 0;
+	var proPos = [];
+	
+	var weapons = 
+	["landmine", 
+	"bow", 
+	"melee", 
+	"paintball", 
+	"basketball", 
+	"octobrush", 
+	"fidget spinner", 
+	"assault rifle", 
+	"frisbee",
+	"tank"];
+	
+	var melee = 
+	["sword",
+	"knife",
+	"golf club",
+	"baseball bat",
+	"stick",
+	"potato",
+	"shoe",
+	"dead platypus"];
+	
+	var itemsToFind = 
+	["fruit tree",
+	"poisonous fruit tree",
+	"clean water",
+	"clean coal",
+	"clean Cole",
+	"OCC vending machine",
+	"wild Ohio Fried Chicken",
+	"glasses that cure color-blindness",
+	"bleach gummy bottle",
+	"paintball",
+	"used Band-Aid",
+	"clean water",
+	"pack of condoms",
+	"tent",
+	"biology textbook",
+	"bucket of KFC",
+	"weapon",
+	"tin of Donald Trump's bronzer",
+	"Emoji Movie on laserdisc",
+	"anthology of life-changing poems",
+	"quenched and tempered steel",
+	"VIP ticket to Tana Mojo concert",
+	"unicorn",
+	"spiritual enlightenment in a Villanova brochure"];
+
+	var shelter = 
+	["cave",
+	"tree",
+	"cardboard box",
+	"geometrically stable truss",
+	"House of the Seven Gables"];
+	
+	var cornucopia = [
+	"run", 
+	"supply", 
+	"weapon", 
+	"battle" 
+	];
+	
+	var sponsor = 
+	["empty box",
+	"paintball",
+	"used Band-Aid",
+	"clean water",
+	"pack of condoms",
+	"tent",
+	"biology textbook",
+	"bucket of KFC",
+	"weapon",
+	"tin of Donald Trump's bronzer",
+	"Emoji Movie on laserdisc",
+	"anthology of life-changing poems",
+	"quenched and tempered steel",
+	"VIP ticket to Tana Mojo concert"];
+	
+	var misc = 
+	["wanders around",
+	"picks flowers",
+	"heils Hitler",
+	"hails Hortler",
+	"talks to Annie",
+	"drops an Annie rant",
+	"gain",
+	"levels up",
+	"rolls",
+	"sings us a song",
+	"is the sheriff",
+	"plays some pranks (GONE WRONG GONE SEXUAL)",
+	"realizes maverick isn't all yellow"];
+	
+	var inum = itemsToFind.length;
+	var wnum = weapons.length;
+	var mnum = melee.length;
+	var snum = shelter.length;
+	var cnum = cornucopia.length;
+	var spnum = sponsor.length;
+	var minum = misc.length;
+	
+	var pro = [];
+	
+	var onClick = function(){
+		mult = wow.checked;
+		num = document.getElementById("wow").value;
+		first.style.visibility = "hidden";
+		pressed = false;
+		
+		for (var i=0; i<num; i++){
+			var temp = document.createElement("div");
+			var label = document.createElement("label");
+			label.appendChild(document.createTextNode("Champion name: "));
+			var field = document.createElement("input");
+			field.style.type = "text";
+			field.className = "newNames";
+			label.appendChild(field);
+			var wowselect = document.createElement("select");
+			wowselect.className = "wowselect";
+			var male = document.createElement("option");
+			male.value = "him";
+			male.textContent = "M";
+			var female = document.createElement("option");
+			female.value = "her";
+			female.textContent = "F";
+			wowselect.appendChild(male);
+			wowselect.appendChild(female);
+			temp.appendChild(label);
+			temp.appendChild(wowselect);
+			names.insertBefore(temp, names.children[names.children.length-1]);
+			names.insertBefore(document.createElement("br"), names.children[names.children.length-1]);
+		} 
+	};
+	
+	function registerNames(){
+		var fields = document.getElementsByClassName("newNames");
+		var wowselect = document.getElementsByClassName("wowselect");
+		
+		for (var i=0; i<num; i++){
+			allNames.push(fields[i].value);
+			pro.push(wowselect[i].value);
+			if (wowselect[i].value === "him"){
+				proPos.push("his");
+			}
+			else {
+				proPos.push(wowselect[i].value);
+			}
+			deathBools.push(true);
+			alreadyDead.push(true);
+			kills.push(0);
+			var temp = document.createElement("div");
+			var p = document.createElement("p");
+			p.appendChild(document.createTextNode(allNames[i] + " ("));
+			var span = document.createElement("span");
+			span.appendChild(document.createTextNode("Alive"));
+			span.style.color = "green";
+			span.className = "wowdead";
+			p.appendChild(span);
+			p.appendChild(document.createTextNode("): "));
+			var spanTwo = document.createElement("span");
+			spanTwo.appendChild(document.createTextNode("0 Kills"));
+			spanTwo.className = "wowkills";
+			p.appendChild(spanTwo);
+			temp.appendChild(p);
+			temp.id = allNames[i];
+			temp.className = "champion";
+			stats.appendChild(temp);
+		}
+		names.style.visibility = "hidden";
+	}
+	
+	function deadHighlight(){
+		var spans = document.getElementsByClassName("wowdead");
+		
+		for (var i=0; i<num; i++){
+			if (!deathBools[i]){
+				spans[i].textContent = "Dead";
+				spans[i].style.color = "red";
+			}
+		}
+	}
+	
+	function proceedToDay(){
+		dayCounter++;
+		document.getElementById("dayNum").textContent += dayCounter;
+		if (dayCounter === 1){
+			cornucopiaNow();
+		}
+	}
+	
+	function toDeaths(){
+		var cannon = document.getElementById("cannon");
+		cannon.textContent = numDeaths + cannon.textContent;
+		if (numDeaths === 1){
+			cannon.textContent = "1 cannon shot can be heard in the distance";
+		}
+		var temp = document.createElement("div");
+		var p = document.createElement("p");
+		numDeaths = 0;
+		
+		for (var i=0; i<deathBools.length; i++){
+			if (!deathBools[i] && alreadyDead[i]){
+				p.appendChild(document.createTextNode(allNames[i] + ": " + kills[i] + " kills"));
+				p.appendChild(document.createElement("br"));
+				alreadyDead[i] = false;
+			}
+		}
+		
+		temp.appendChild(p);
+		deaths.insertBefore(temp, deaths.children[deaths.childElementCount-1]);
+		corn.style.visibility = "hidden";
+		day.style.visibility = "hidden";
+		deaths.style.visibility = "visible";
+	}
+	
+	function toStats(){
+		var wowkills = document.getElementsByClassName("wowkills");
+		deadHighlight();
+		for (var i=0; i<kills.length; i++){
+			wowkills[i].textContent = kills[i] + " Kills";
+		}
+		deaths.removeChild(deaths.children[deaths.childElementCount-2]);
+		deaths.style.visibility = "hidden";
+		stats.style.visibility = "visible";
+	}
+	
+	function cornucopiaNow(){
+		var done = [];
+		var fates = [];
+		var notDone = 0;
+		
+		for (var i=0; i<num; i++){
+			done.push(false);
+			notDone++;
+		}
+		
+		
+		while (notDone != 0){
+			var r = rand(num);
+			if (done[r]){
+				while (done[r]){
+					r++;
+					if (r === allNames.length-1){
+						r = 0;
+					}
+				}
+			}
+			
+			done[r] = true;
+			notDone--;
+			
+			switch(cornucopia[rand(cnum)]){
+				case "run": 
+					fates.push(allNames[r] + " ran away from the Cornucopia.");
+					break;
+				case "supply":
+					fates.push(allNames[r] + " finds " + itemsToFind[rand(inum)] + " in the Cornucopia.");
+					break;
+				case "weapon":
+					fates.push(allNames[r] + " finds " + weapons[rand(wnum)] + " in the Cornucopia.");
+					if (fates[fates.length-1].indexOf("melee") > 0){
+						fates[fates.length-1] = allNames[r] + " finds " + melee[rand(mnum)] + " in the Cornucopia.";
+					}
+					break;
+				case "battle":	
+					if (notDone === 0){
+						fates.push(allNames[r] + " ran away from the Cornucopia.");
+						break;
+					}
+					else {
+						var q = rand(allNames.length);
+						if (done[q]){
+							while (done[q]){
+								q++;
+								if (q === allNames.length-1){
+									q = 0;
+								}
+							}
+						}
+						var enemy = allNames[q];
+						var fate = rand(4);
+						var ult = allNames[r] + " battles " + allNames[q] + ". ";
+						if (fate === 0){
+							ult += allNames[r] + " defeats " + allNames[q] + ", but decides to spare " + proPos[q] + " life.";
+						}
+						else if (fate === 1){
+							ult += allNames[r] + " defeats and kills " + allNames[q];
+							deathBools[q] = false;
+							summary.push(ult);
+							kills[r]++;
+							numDeaths++;
+						}
+						else if (fate === 2){
+							ult += allNames[q] + " defeats " + allNames[r] + ", but decides to spare " + proPos[r] + " life.";
+						}
+						else if (fate === 3){
+							ult += allNames[q] + " defeats and kills " + allNames[r];
+							deathBools[r] = false;
+							summary.push(ult);
+							kills[q]++;
+							numDeaths++;
+						}
+						done[q] = true;
+						notDone--;
+						fates.push(ult);
+						break;
+					}
+			}
+		}
+			
+		var temp = document.createElement("div");
+		var p = document.createElement("p");
+			
+		for (var i=fates.length-1; i>=0; i--){
+			p.appendChild(document.createTextNode(fates.pop()));
+			p.appendChild(document.createElement("br"));
+		}
+			
+		temp.appendChild(p);
+		corn.insertBefore(temp, corn.children[corn.childElementCount-1]);
+		stats.style.visibility = "hidden";	
+	}
+	
+	function rand(x){
+		return Math.floor(Math.random()*x);
+	}
+	
+	
+	press.addEventListener("click",onClick);
+	document.getElementById("confirmNames").addEventListener("click",registerNames);
+	document.getElementById("proceedOne").addEventListener("click", proceedToDay);
+	document.getElementById("proceedThree").addEventListener("click",toDeaths);
+	document.getElementById("proceedFour").addEventListener("click",toStats);
+	
+</script>
+</body>
+</html>
