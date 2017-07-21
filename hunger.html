@@ -115,7 +115,6 @@
 
 <script>
 	var first = document.getElementById("start");
-	//var num = document.getElementById("wow");
 	var wow = document.getElementById("double");
 	var press = document.getElementById("button");
 	var stats = document.getElementById("stats");
@@ -181,7 +180,78 @@
 	"VIP ticket to Tana Mojo concert",
 	"unicorn",
 	"spiritual enlightenment in a Villanova brochure"];
-
+	
+	var causeAndEffect = 
+	["fruit tree",
+	"eats fruit and gains one point in strength",
+	"poisonous fruit tree",
+	"eats a poisonous fruit",
+	"clean water",
+	"drinks clean water and gains one point in constitution",
+	"clean coal",
+	"uses coal to cook food",
+	"clean Cole",
+	"uses clean Cole as food",
+	"OCC vending machine",
+	"gets a tin of Altoids",
+	"wild Ohio Fried Chicken",
+	"random chicken",
+	"glasses that cure color-blindness",
+	"is no longer color-blind",
+	"bleach gummy bottle",
+	"eats bleach gummy bottle",
+	"paintball",
+	"random paintball",
+	"used Band-Aid",
+	"random bandaid",
+	"pack of condoms",
+	"safe dating",
+	"tent",
+	"constructs a tent",
+	"biology textbook",
+	"reads a biology textbook and falls asleep",
+	"bucket of KFC",
+	"eats KFC",
+	"weapon",
+	"weapon",
+	"tin of Donald Trump's bronzer",
+	"becomes as orange as Donald Trump and dies of chemical poisoning",
+	"Emoji Movie on laserdisc",
+	"dies of pure cancer after watching the Emoji Movie",
+	"anthology of life-changing poems",
+	"life gets changed by poetry",
+	"quenched and tempered steel",
+	"constructs a geometrically stable truss",
+	"VIP ticket to Tana Mojo concert",
+	"gets assaulted by a toothbrush at Tana Mojo concert",
+	"unicorn",
+	"pets the pink fluffy unicorn",
+	"spiritual enlightenment in a Villanova brochure",
+	"sees the light and adheres to the all-boy advantage"];
+	
+	var killCauseAndEffect = [
+	"landmine", 
+	"random mine",
+	"bow",
+	"shoots",
+	"melee",
+	"kills",
+	"paintball", 
+	"brings one less paintball, so",
+	"basketball", 
+	"dunks on",
+	"octobrush",
+	"splats",
+	"fidget spinner", 
+	"spins fidget spinner fatally at",
+	"assault rifle", 
+	"shoots",
+	"frisbee",
+	"decapitates",
+	"tank",
+	"mass murders"
+	];
+	
 	var shelter = 
 	["cave",
 	"tree",
@@ -227,6 +297,9 @@
 	"plays some pranks (GONE WRONG GONE SEXUAL)",
 	"realizes maverick isn't all yellow"];
 	
+	var options = ["weapons", "items", "use", "shelter", "misc"];
+	
+	
 	var inum = itemsToFind.length;
 	var wnum = weapons.length;
 	var mnum = melee.length;
@@ -236,6 +309,7 @@
 	var minum = misc.length;
 	
 	var pro = [];
+	var playerItems = [];
 	
 	var onClick = function(){
 		mult = wow.checked;
@@ -284,6 +358,7 @@
 			deathBools.push(true);
 			alreadyDead.push(true);
 			kills.push(0);
+			playerItems.push([]);
 			var temp = document.createElement("div");
 			var p = document.createElement("p");
 			p.appendChild(document.createTextNode(allNames[i] + " ("));
@@ -387,20 +462,26 @@
 			
 			switch(cornucopia[rand(cnum)]){
 				case "run": 
-					fates.push(allNames[r] + " ran away from the Cornucopia.");
+					fates.push(allNames[r] + " runs away from the Cornucopia.");
 					break;
 				case "supply":
-					fates.push(allNames[r] + " finds " + itemsToFind[rand(inum)] + " in the Cornucopia.");
+					var z = rand(inum);
+					fates.push(allNames[r] + " finds " + itemsToFind[z] + " in the Cornucopia.");
+					playerItems[r].push(itemsToFind[z]);
 					break;
 				case "weapon":
-					fates.push(allNames[r] + " finds " + weapons[rand(wnum)] + " in the Cornucopia.");
+					var z = rand(wnum);
+					fates.push(allNames[r] + " finds " + weapons[z] + " in the Cornucopia.");
+					playerItems[r].push(weapons[z]);
 					if (fates[fates.length-1].indexOf("melee") > 0){
-						fates[fates.length-1] = allNames[r] + " finds " + melee[rand(mnum)] + " in the Cornucopia.";
+						z = rand(mnum);
+						fates[fates.length-1] = allNames[r] + " finds " + melee[z] + " in the Cornucopia.";
+						playerItems[r][playerItems[r].length-1] = melee[z];
 					}
 					break;
 				case "battle":	
 					if (notDone === 0){
-						fates.push(allNames[r] + " ran away from the Cornucopia.");
+						fates.push(allNames[r] + " runs away from the Cornucopia.");
 						break;
 					}
 					else {
