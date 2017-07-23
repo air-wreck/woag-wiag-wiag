@@ -47,6 +47,7 @@
 		text-align:center;
 		z-index:1;
 		background-color:white;
+		
 	}
 	
 	#corn {
@@ -68,8 +69,8 @@
 		left:0;
 		text-align:center;
 		z-index:0;
-		background-color:white;
 		visibility:hidden;
+		background-color:white;
 	}
 	
 </style>
@@ -506,14 +507,28 @@
 	}
 	
 	function simulateDay(){
+		
+		day.style.visibility = "visible";
+		stats.style.visibility = "hidden";
+		
+		console.log("green");
 		var done = [];
 		var fates = [];
 	
 		for (var i=0; i<num; i++){
-			done.push(false);
+			if (deathBools[i]){
+				done.push(false);
+				console.log(done);
+			}
+			else {
+				done.push(true);
+				console.log(done);
+			}
 		}
-	
+		
 		while(done.indexOf(false) != -1){
+			console.log(done);
+			console.log("point 2");
 			var r = rand(num);
 			if (done[r]){
 				while (done[r]){
@@ -526,6 +541,8 @@
 				}
 			}
 			
+			console.log(r);
+			console.log(fates);
 			done[r] = true;
 			
 			switch (options[rand(options.length)]){
@@ -726,6 +743,7 @@
 					else if (b === 1){
 						fates[fates.length-1] += ", but decides it is too dangerous.";
 					}
+					break;
 				case "misc":
 					var a = misc[rand(minum)];
 					if (a === "cries"){
@@ -809,6 +827,10 @@
 					break;
 			}
 		}
+
+		console.log("point3");
+		console.log(fates);
+		console.log(done);
 		
 		var temp = document.createElement("div");
 		var par = document.createElement("p");
@@ -824,8 +846,8 @@
 		
 		temp.appendChild(par);
 		day.appendChild(temp);
-		day.style.visibility = "visible";
-		stats.style.visibility = "hidden";
+		//day.style.visibility = "visible";
+		//stats.style.visibility = "hidden";
 	}
 	
 	function cornucopiaNow(){
