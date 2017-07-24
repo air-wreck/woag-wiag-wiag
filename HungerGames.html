@@ -17,9 +17,7 @@
 	
 	#start, #names, #stats, #day, #corn, #deaths, #winner, #summary {
 		background-image:url("http://bestscreenwallpaper.pro/wp-content/uploads/2015/11/Logo-The-Hunger-Games-Mockingjay-Part-2.jpg");
-		background-size:cover;
 		-webkit-background-size:cover;
-		-moz-background-size:cover;
 	}
 	
 	#start {
@@ -645,7 +643,7 @@
 						fates.push(allNames[r] + " receives " + article + " " + sponsor[q] + " from a sponsor");
 						playerItems[r].push(sponsor[q]);
 						if (sponsor[q] === "empty box"){
-							fates[fates.length-1] += ", because apparently the sponsor is a dick.";
+							fates[fates.length-1] += ".";
 						}
 						else {
 							fates[fates.length-1] += ".";
