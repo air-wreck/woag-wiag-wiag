@@ -546,7 +546,7 @@
 			if (!deathBools[i] && alreadyDead[i]){
 				deathCounter++;
 				if (kills[i] === 1){
-					p.appendChild(document.createTextNode(allNames[i] + ": " + kills[i] + " Kill"));
+					p.appendChild(document.createTextNode(allNames[i] + ": 1 Kill"));
 				}
 				else {
 					p.appendChild(document.createTextNode(allNames[i] + ": " + kills[i] + " Kills"));
@@ -572,7 +572,12 @@
 		var wowkills = document.getElementsByClassName("wowkills");
 		deadHighlight();
 		for (var i=0; i<kills.length; i++){
-			wowkills[i].textContent = kills[i] + " Kills";
+			if (kills[i] === 1){
+				wowkills[i].textContent = "1 Kill";
+			}
+			else {
+				wowkills[i].textContent = kills[i] + " Kills";
+			}
 		}
 		deaths.removeChild(deaths.children[deaths.childElementCount-2]);
 		deaths.style.visibility = "hidden";
