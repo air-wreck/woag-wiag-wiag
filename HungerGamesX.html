@@ -1252,11 +1252,11 @@
 		
 		if (count === 1){
 			document.getElementById("declare").innerHTML = "<strong>" + allNames[deathBools.indexOf(true)] + "</strong>";
-			if (kills[deathBools.indexOf(true)] != 1){
-				document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kills";
+			if (kills[deathBools.indexOf(true)] === 1){
+				document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kill";
 			}
 			else {
-				document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kill";
+				document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kills";
 			}
 			winner.style.visibility = "visible";
 			stats.style.visibility = "hidden";
