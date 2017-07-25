@@ -545,7 +545,12 @@
 		for (var i=0; i<deathBools.length; i++){
 			if (!deathBools[i] && alreadyDead[i]){
 				deathCounter++;
-				p.appendChild(document.createTextNode(allNames[i] + ": " + kills[i] + " kills"));
+				if (kills[i] === 1){
+					p.appendChild(document.createTextNode(allNames[i] + ": " + kills[i] + " Kill"));
+				}
+				else {
+					p.appendChild(document.createTextNode(allNames[i] + ": " + kills[i] + " Kills"));
+				}
 				p.appendChild(document.createElement("br"));
 				alreadyDead[i] = false;
 			}
@@ -1247,7 +1252,12 @@
 		
 		if (count === 1){
 			document.getElementById("declare").innerHTML = "<strong>" + allNames[deathBools.indexOf(true)] + "</strong>";
-			document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kills";
+			if (kills[deathBools.indexOf(true)] != 1){
+				document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kills";
+			}
+			else {
+				document.getElementById("champKills").textContent = kills[deathBools.indexOf(true)] + " Kill";
+			}
 			winner.style.visibility = "visible";
 			stats.style.visibility = "hidden";
 			return true;
