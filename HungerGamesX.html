@@ -741,24 +741,13 @@
 								}
 								else {
 									fates.push(allNames[r] + " " + b + " " + allNames[q] + ".");
-									deathBools[q] = false;
+									xKillsY(r,q);
 									done[q] = true;
-									numDeaths++;
-									console.log(numDeaths);
-									kills[r]++;
 								}
 								summary.push(fates[fates.length-1]);
 							}
 							else if (fate === 1){
 								var q = liveChampion(r);
-								/*if (a === "landmine"){
-									fates.push(allNames[r] + " " + b + ".");
-									injureOne(r);
-									if (!deathBools[r]){
-										fates[fates.length-1] += " " + allNames[r] + " is severely injured and dies.";
-										summary.push(fates[fates.length-1]);
-									}
-								}*/
 								if (a === "frisbee"){
 									injureTwo(r,q);
 									if (!deathBools[q]){
