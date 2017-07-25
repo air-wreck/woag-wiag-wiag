@@ -17,9 +17,7 @@
 	
 	#start, #names, #stats, #day, #corn, #deaths, #winner, #summary {
 		background-image:url("http://bestscreenwallpaper.pro/wp-content/uploads/2015/11/Logo-The-Hunger-Games-Mockingjay-Part-2.jpg");
-		background-size:cover;
 		-webkit-background-size:cover;
-		-moz-background-size:cover;
 	}
 	
 	#start {
@@ -697,8 +695,6 @@
 											done[q] = true;
 											done[s] = true;
 											kills[r] += 2;
-											numDeaths += 2;
-											console.log(numDeaths);
 										}
 										else {
 											fates.push(allNames[r] + " sets off a landmine that kills " + allNames[q] + ".");
@@ -720,6 +716,11 @@
 								}
 								else if (a === "octobrush"){
 									fates.push(allNames[r] + " splats " + allNames[q] + " with an octobrush.");
+									xKillsY(r,q);
+									done[q] = true;
+								}
+								else if (a === "paintball"){
+									fates.push(allNames[r] + " " + b + " " + allNames[q] + " dies of needing paintballs.");
 									xKillsY(r,q);
 									done[q] = true;
 								}
@@ -902,7 +903,6 @@
 						fates.push(allNames[q] + " triggers " + allNames[r]);
 						if (!deathBools[r]){
 							fates[fates.length-1] += " to death.";
-							xKillsY(q,r);
 							summary.push(fates[fates.length-1]);
 						}
 						else {
@@ -912,9 +912,8 @@
 					else if (a === "battles and wounds"){
 						var q = liveChampion(r);
 						injureTwo(r,q);
-						if (!deathBools[r]){
+						if (!deathBools[q]){
 							fates.push(allNames[r] + " battles and kills " + allNames[q] + ".");
-							xKillsY(r,q);
 							summary.push(fates[fates.length]);
 						}
 						else {
@@ -925,7 +924,6 @@
 						injureOne(r);
 						if (!deathBools[r]){
 							fates.push(allNames[r] + " " + a + " and dies.");
-							xDies(r);
 							summary.push(fates[fates.length-1]);
 						}
 						else {
@@ -1189,7 +1187,6 @@
 			playerInj[y] = true;
 			deathBools[y] = false;
 			kills[x]++;
-			numDeaths++;
 		}
 	}
 	
