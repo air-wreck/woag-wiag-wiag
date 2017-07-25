@@ -653,18 +653,22 @@
 					}
 				case "use": 
 					console.log("use");
+					console.log(playerItems[r]);
 					if (playerItems[r].length === 0){
 						done[r] = false;
 					}
 					else {
 						var a = playerItems[r][0];
 						var aMelee;
+						var b = killCauseAndEffect[killCauseAndEffect.indexOf(a) + 1];
+						console.log(a);
+						console.log(b);
 						if (weapons.indexOf(a) != -1 || melee.indexOf(a) != -1){
 							if (melee.indexOf(a) != -1){
 								aMelee = a;
 								a = "melee";
 							}
-							var b = killCauseAndEffect[killCauseAndEffect.indexOf(a) + 1];
+							b = killCauseAndEffect[killCauseAndEffect.indexOf(a) + 1];
 							var q = liveChampion(r);
 							var fate = rand(2);
 							if (a === "melee" && fate === 0){
@@ -683,6 +687,7 @@
 							}
 							else if (b === "random mine" || fate === 0){
 								if (b === "random mine"){
+									console.log(b);
 									var c = rand(2);
 									if (c === 0){
 										var s = liveChampion(r);
@@ -706,6 +711,7 @@
 										console.log(numDeaths);
 										deathBools[r] = false;
 									}
+									console.log(fates[fates.length-1]);
 								}
 								else if (a === "frisbee"){
 									fates.push(allNames[r] + " decapitates " + allNames[q] + " with a frisbee.");
