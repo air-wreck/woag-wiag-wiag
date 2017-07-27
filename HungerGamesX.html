@@ -331,7 +331,8 @@
 	"hides in a river",
 	"hides from",
 	"eats",
-	"attaches a measuring tape to a toaster"];
+	"attaches a measuring tape to a toaster",
+	"gains Disney Channel flo"];
 	
 	var injury = [
 	"gets a cold",
@@ -371,8 +372,7 @@
 	
 	var heal = [
 	"own",
-	"other",
-	"Disney"];
+	"other"];
 	
 	var variousDeaths = [
 	"strangles",
@@ -944,7 +944,7 @@
 						fates.push(allNames[r] + " heals " + pro[r] + "self.");
 					}
 					else if (playerInj.indexOf(false) === -1){
-						fates.push(allNames[r] + " gains Disney Channel flo.");
+						done[r] = false;
 					}
 					else {
 						var q = rand(num);
