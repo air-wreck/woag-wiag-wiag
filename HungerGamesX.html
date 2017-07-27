@@ -1032,7 +1032,12 @@
 						}
 					}
 					else if (doubleDeath.indexOf(a) != -1){
-						fates.push(allNames[r] + " " + a + " " + allNames[q] + ".");
+						if (a === "gets nuked from orbit by"){
+							fates.push(allNames[q] + " " + a + " " + allNames[r] + ".");
+						}
+						else {
+							fates.push(allNames[r] + " " + a + " " + allNames[q] + ".");
+						}
 						summary.push(fates[fates.length-1]);
 						done[q] = true;
 						xKillsY(r,q);
