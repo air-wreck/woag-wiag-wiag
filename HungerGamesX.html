@@ -350,7 +350,8 @@
 	"gets carpal tunnel syndrome from playing osu",
 	"gets osteoporosis",
 	"gets crippling depression",
-	"tries to break the fourth wall"];
+	"tries to break the fourth wall",
+	"prank calls"];
 	
 	var injEffect = [
 	"bow",
@@ -388,7 +389,8 @@
 	"forgets how to breathe",
 	"uses dank memes to kill",
 	"navy seals",
-	"unsafe dating"];
+	"unsafe dating",
+	"gets hit by a hurricane"];
 	
 	var doubleDeath = [
 	"strangles", 
@@ -930,10 +932,21 @@
 						injureTwo(r,q);
 						if (!deathBools[q]){
 							fates.push(allNames[r] + " battles and kills " + allNames[q] + ".");
-							summary.push(fates[fates.length]);
+							summary.push(fates[fates.length-1]);
 						}
 						else {
 							fates.push(allNames[r] + " battles and wounds " + allNames[q] + ".");
+						}
+					}
+					else if (a === "prank calls"){
+						var q = liveChampion(r);
+						injureTwo(r,q);
+						if (!deathBools[q]){
+							fates.push(allNames[r] + " fatally prank calls " + allNames[q] + ".");
+							summary.push(fates[fates.length-1]);
+						}
+						else {
+							fates.push(allNames[q] + " gets prank called by " + allNames[r] + ".");
 						}
 					}
 					else {
