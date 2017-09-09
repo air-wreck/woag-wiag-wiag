@@ -682,6 +682,7 @@
 							var fate = rand(2);
 							if (a === "melee" && fate === 0){
 								fates.push(allNames[r] + " " + b + " " + allNames[q] + " with a " + aMelee + ".");
+								xKillsY(r,q);
 							}
 							else if (a === "melee" && fate === 1){
 								injureTwo(r,q);
