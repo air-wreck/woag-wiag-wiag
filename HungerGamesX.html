@@ -889,12 +889,6 @@
 						if (deathBools.indexOf(false) === -1){
 							fates.push(allNames[r] + " eats dirt.");
 						}
-					else if (a === "talks to"){
-						fates.push(allNames[r] + " talks to " + allNames[q] + ".");
-					}
-					else if (a === "drops a rant against"){
-						fates.push(allNames[r] + " drops a rant about " + allNames[q] + ".");
-					}
 						else {
 							var d = rand(num);
 							while (deathBools[d]){
@@ -907,6 +901,12 @@
 							}
 							fates.push(allNames[r] + " eats " + allNames[d] + "\'s dead body.");
 						}
+					}
+					else if (a === "talks to"){
+						fates.push(allNames[r] + " talks to " + allNames[q] + ".");
+					}
+					else if (a === "drops a rant against"){
+						fates.push(allNames[r] + " drops a rant about " + allNames[q] + ".");
 					}
 					else {
 						fates.push(allNames[r] + " " + a + ".");
