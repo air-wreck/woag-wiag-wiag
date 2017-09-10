@@ -629,11 +629,13 @@
 						if (itemsToFind[q] === "Lapras"){
 							fates.push("A wild Lapras has appeared. " + allNames[r] + " has caught it!");
 						}
-						if (f === 'a' || f === 'e' || f === 'i' || f === 'o'){
-							article += "n";
+						else {
+							if (f === 'a' || f === 'e' || f === 'i' || f === 'o'){
+								article += "n";
+							}
+							fates.push(allNames[r] + " discovers " + article + " " + itemsToFind[q] + " lying on the ground.");
+							playerItems[r].push(itemsToFind[q]);
 						}
-						fates.push(allNames[r] + " discovers " + article + " " + itemsToFind[q] + " lying on the ground.");
-						playerItems[r].push(itemsToFind[q]);
 						break;
 					}
 					else if (a === 1){
