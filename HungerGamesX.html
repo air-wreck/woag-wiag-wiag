@@ -363,9 +363,7 @@
 	"fidget spinner",
 	"spins fidget spinner nonfatally at",
 	"assault rifle",
-	"shoots and grazes",
-	"frisbee",
-	"breaks"];
+	"shoots and grazes"];
 	
 	var variousDeaths = [
 	"strangles",
@@ -747,6 +745,17 @@
 										fates.push(allNames[r] + " breaks " + allNames[q] + "\'s nose with a frisbee.");
 									}
 								}
+								else if (a === "tank"){
+									injureTwo(r,q);
+									if (!deathBools[q]){
+										fates.push(allNames[r] + " runs over " + allNames[q] + " with " + proPos[r] + " tank, causing the death of " + allNames[q] + ".");
+										done[q] = true;
+										summary.push(fates[fates.length-1]);
+									}
+									else {
+										fates.push(allNames[r] + " runs over " + allNames[q] + " with " + proPos[r] + " tank, but " + allNames[q] + " survives due to " + proPos[q] + " belief in the Flying Spaghetti Monster.");
+									}
+								}
 								else {
 									injureTwo(r,q);
 									if (!deathBools[q]){
@@ -824,8 +833,7 @@
 								fates.push(allNames[r] + " " + y + ".");
 							}
 						}
-						console.log(playerItems[r]);
-						discardItem(r);;
+						discardItem(r);
 					}
 					break;
 				case "shelter":
@@ -884,7 +892,6 @@
 					}
 					break;
 				case "injury":
-					console.log("injury");
 					var a = injury[rand(injury.length)];
 					if (a === "triggered"){
 						var q = liveChampion(r);
