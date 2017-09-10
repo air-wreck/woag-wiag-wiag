@@ -614,11 +614,15 @@
 					if (f === 'a' || f === 'e' || f === 'i' || f === 'o'){
 						article += "n";
 					}
-					fates.push(allNames[r] + " stumbles upon " + article + " " + weapons[w]);
+					fates.push(allNames[r] + " stumbles upon " + article + " " + weapons[w] + ".");
 					playerItems[r].push(weapons[w]);
 					if (weapons[w] === "melee"){
 						w = rand(mnum);
-						fates[fates.length-1] = allNames[r] + " stumbles upon " + melee[w];
+						f = melee[w].charAt(0);
+						if (f === 'a' || f === 'e' || f === 'i' || f === 'o'){
+							article += "n";
+						}
+						fates[fates.length-1] = allNames[r] + " stumbles upon " + article + " " + melee[w] + ".";
 						playerItems[r][playerItems[r].length-1] = melee[w];
 					}
 					break;
@@ -1144,7 +1148,7 @@
 							ult += allNames[r] + " defeats " + enemy + ", but decides to spare " + proPos[q] + " life.";
 						}
 						else if (fate === 1){
-							ult += allNames[r] + " defeats and kills " + enemy;
+							ult += allNames[r] + " defeats and kills " + enemy + ".";
 							deathBools[q] = false;
 							summary.push(ult);
 							kills[r]++;
@@ -1154,7 +1158,7 @@
 							ult += enemy + " defeats " + allNames[r] + ", but decides to spare " + proPos[r] + " life.";
 						}
 						else if (fate === 3){
-							ult += enemy + " defeats and kills " + allNames[r];
+							ult += enemy + " defeats and kills " + allNames[r] + ".";
 							deathBools[r] = false;
 							summary.push(ult);
 							kills[q]++;
