@@ -587,10 +587,8 @@
 	}
 	
 	function simulateDay(){
-		
-		//day.style.visibility = "visible";
-		//stats.style.visibility = "hidden";
-		
+		console.log(pro);
+		console.log(proPos);
 		var done = [];
 		var fates = [];
 	
@@ -661,6 +659,7 @@
 						playerItems[r].push(sponsor[q]);
 						if (sponsor[q] === "empty box"){
 							fates[fates.length-1] += ", because apparently the sponsor is a dick.";
+							playerItems[r].pop();
 						}
 						else {
 							fates[fates.length-1] += ".";
@@ -675,8 +674,7 @@
 					}
 					else {
 						var a = playerItems[r][0];
-						var aMelee;
-						var b = killCauseAndEffect[killCauseAndEffect.indexOf(a) + 1];
+						var aMelee, b;
 						console.log(a);
 						console.log(b);
 						if (weapons.indexOf(a) != -1 || melee.indexOf(a) != -1){
@@ -1009,6 +1007,9 @@
 						summary.push(fates[fates.length-1]);
 						done[q] = true;
 						xKillsY(r,q);
+					}
+					else if (a === "chokes on crabapples in cheeks"){
+						fates.push(allNames[r] + " chokes on crabapples in " + proPos[r] + " cheeks.");
 					}
 					else if (a === "navy seals"){
 						fates.push(allNames[r] + " calls in the US Navy SEALS, who kill " + allNames[q]);
