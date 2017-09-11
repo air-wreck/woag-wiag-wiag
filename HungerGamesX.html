@@ -169,7 +169,8 @@
 	"fidget spinner", 
 	"assault rifle", 
 	"frisbee",
-	"tank"];
+	"tank",
+	"Stalin mustache"];
 	
 	var melee = 
 	["sword",
@@ -180,7 +181,8 @@
 	"potato",
 	"shoe",
 	"dead platypus",
-	"65"];
+	"65",
+	"diamond sword"];
 	
 	var itemsToFind = 
 	["fruit tree",
@@ -206,7 +208,8 @@
 	"VIP ticket to Tana Mojo concert",
 	"unicorn",
 	"spiritual enlightenment in a Villanova brochure",
-	"Lapras"];
+	"Lapras",
+	"diamond pickaxe"];
 	
 	var causeAndEffect = 
 	["fruit tree",
@@ -252,7 +255,9 @@
 	"spiritual enlightenment in a Villanova brochure",
 	"sees the light and adheres to the all-boy advantage",
 	"Agrawal star",
-	"jealousy"];
+	"jealousy",
+	"diamond pickaxe",
+	"mines diamond ore"];
 	
 	var killCauseAndEffect = [
 	"landmine", 
@@ -274,8 +279,9 @@
 	"frisbee",
 	"decapitates",
 	"tank",
-	"murders"
-	];
+	"murders",
+	"Stalin mustache",
+	"gulag"];
 	
 	var shelter = 
 	["cave",
@@ -306,7 +312,8 @@
 	"quenched and tempered steel",
 	"VIP ticket to Tana Mojo concert",
 	"Agrawal star",
-	"Lapras"];
+	"Lapras",
+	"diamond pickaxe"];
 	
 	var misc = 
 	["wanders around",
@@ -787,6 +794,13 @@
 						else if (a === "Lapras"){
 							var q = liveChampion(r);
 							fates.push(allNames[r] + " used Lapras against " + allNames[q] + ". " + allNames[q] + " fainted and subsequently died. It was super effective.");
+							xKillsY(r,q);
+							summary.push(fates[fates.length-1]);
+							done[q] = true;
+						}
+						else if (a === "Stalin mustache"){
+							var q = liveChampion(r);
+							fates.push(allNames[r] + " sends " + allNames[q] + " to the gulag.");
 							xKillsY(r,q);
 							summary.push(fates[fates.length-1]);
 							done[q] = true;
