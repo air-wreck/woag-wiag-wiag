@@ -965,7 +965,6 @@
 					}
 					break;
 				case "death":
-					console.log("death");
 					var a = variousDeaths[rand(variousDeaths.length)];
 					var q = liveChampion(r);
 					if (a === "breaks"){
@@ -975,9 +974,8 @@
 						xKillsY(r,q);
 					}
 					else if (a === "gets burned to death from"){
-						fates.push(allNames[r] + " " + a + " " + allNames[q] + "\'s mixtape.");
+						fates.push(allNames[r] + " gets burned to death from " + allNames[q] + "\'s mixtape.");
 						summary.push(fates[fates.length-1]);
-						done[q] = true;
 						xKillsY(q,r);
 					}
 					else if (a === "hangs"){
