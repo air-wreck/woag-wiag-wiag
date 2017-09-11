@@ -5,98 +5,194 @@
 <link rel="shortcut icon" href="https://lc-www-live-s.legocdn.com/media/nxtlog/b956b340-2058-4da3-923c-57802f93e07a/440x330/HungerGames_Updated_CC.jpg">
 </head>
 <body>
-<style>	
-	
-	* {
-		color:cyan;
-	}
-	
-	input, button, select, option {
-		background-color:black;
-		outline-color:cyan;
-	}
-	
-	#start, #names, #stats, #day, #corn, #deaths, #winner, #summary {
-		background-image:url("http://bestscreenwallpaper.pro/wp-content/uploads/2015/11/Logo-The-Hunger-Games-Mockingjay-Part-2.jpg");
-		-webkit-background-size:cover;
-		-moz-background-size:cover;
-		background-size:cover;
-	}
-	
-	#start {
-		width:100%;
-		height:100%;
-		position:absolute;
-		top:0;
-		left:0;
-		z-index:5;
-		text-align:center;
-	}
-	
-	#names {
-		width:100%;
-		height:100%;
-		position:absolute;
-		top:0;
-		left:0;
-		z-index:4;
-	}
-	
-	#stats {
-		width:100%;
-		height:100%;
-		position:absolute;
-		top:0;
-		left:0;
-		text-align:center;
-		z-index:3;
-	}
-	
-	#day {
-		width:100%;
-		height:100%;
-		position:absolute;
-		top:0;
-		left:0;
-		text-align:center;
-		z-index:1;
-	}
-	
-	#corn {
-		width:100%;
-		height:100%;
-		position:absolute;
-		top:0;
-		left:0;
-		text-align:center;
-		z-index:2;
-	}
-	
-	#deaths, #winner, #summary {
-		width:100%;
-		height:100%;
-		position:absolute;
-		top:0;
-		left:0;
-		text-align:center;
-		z-index:0;
-		visibility:hidden;
-	}
-	
+<style>
+
+* {
+	color: white;
+	font-family: arial;
+}
+
+button, select, option {
+	background-color:black;
+	outline-color:cyan;
+}
+
+#start, #names, #stats, #day, #corn, #deaths, #winner, #summary {
+	background-image:url("http://bestscreenwallpaper.pro/wp-content/uploads/2015/11/Logo-The-Hunger-Games-Mockingjay-Part-2.jpg");
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	background-size:cover;
+}
+
+#start {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5;
+	text-align:center;
+}
+
+#names {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:4;
+}
+
+#stats {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	z-index:3;
+}
+
+#day {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	z-index:1;
+}
+
+#corn {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	z-index:2;
+}
+
+#deaths, #winner, #summary {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	z-index:0;
+	visibility:hidden;
+}
+
+.header {
+	text-align: center;
+	font-family: arial;
+	background-color: #f4511e;
+	color: white;
+	padding: 15px;
+	width: 100%;
+	box-shadow: 0px 5px 20px #3a3a3a;
+}
+
+.footer {
+	text-align: center;
+	font-family: arial;
+	background-color: #ffa705;
+	color: white;
+	padding: 15px;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #f4511e;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 14px;
+	padding: 5px;
+	width: 150px;
+	transition: all 0s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.button span {
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0s;
+}
+
+.button:hover span {
+	padding-right: 25px;
+	transition: 0s;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+	transition: 0s;
+}
+
+input[type=text] {
+	border: none;
+	border-bottom: 2px solid #ffa705;
+	background-color: #7f7f7f;
+	color: white;
+	padding: 5px;
+}
+
+input[type=text]:focus {
+	border: none;
+	border-bottom: 2px solid #f4511e;
+	background-color: #7f7f7f;
+}
+
+input[type=number] {
+	border: none;
+	border-bottom: 2px solid #ffa705;
+	background-color: #7f7f7f;
+	color: white;
+	padding: 5px;
+}
+
+input[type=number]:focus {
+	border: none;
+	border-bottom: 2px solid #f4511e;
+	background-color: #7f7f7f;
+}
+
 </style>
 <div id="start">
-<h1 id="hungergames">The Hunger Games</h1>
-<h2 id="heading">May the odds be ever in your favor!</h2>
-<label>How many participants?
-<input id="wow" type="text"/>
-</label>
-<br>
-<label>Two champions allowed?
-<input id="double" type="checkbox"/>
-</label>
-<br>
-<br>
-<button id="button" type="button">Confirm</button>
+	<div id="hungergames" class="header"><h1>The Hunger Games</h1></div>
+	<div style="height: 30%;"></div>
+	<div style="width: 60%; float: left;">
+		<h2 id="heading">May the odds be ever in your favor!</h2>
+		<label>How many participants?
+			<input id="wow" type="number"/>
+		</label>
+		<br><br>
+		<label>Two champions allowed?
+			<input id="double" type="checkbox"/>
+		</label>
+		<br>
+		<br>
+		<button id="button" type="button" class="button"><span>Confirm</span></button>
+	</div>
 </div>
 
 <div id="names">
@@ -158,20 +254,20 @@
 	var numDeaths = 0;
 	var proPos = [];
 	var finalSum = document.getElementById("summary");
-	
-	var weapons = 
-	["landmine", 
-	"bow", 
-	"melee", 
-	"paintball", 
-	"basketball", 
-	"octobrush", 
-	"fidget spinner", 
-	"assault rifle", 
+
+	var weapons =
+	["landmine",
+	"bow",
+	"melee",
+	"paintball",
+	"basketball",
+	"octobrush",
+	"fidget spinner",
+	"assault rifle",
 	"frisbee",
 	"tank"];
-	
-	var melee = 
+
+	var melee =
 	["sword",
 	"knife",
 	"golf club",
@@ -182,8 +278,8 @@
 	"dead platypus",
 	"65",
 	"diamond sword"];
-	
-	var itemsToFind = 
+
+	var itemsToFind =
 	["fruit tree",
 	"poisonous fruit tree",
 	"clean water",
@@ -210,8 +306,8 @@
 	"Lapras",
 	"diamond pickaxe",
 	"Stalin mustache"];
-	
-	var causeAndEffect = 
+
+	var causeAndEffect =
 	["fruit tree",
 	"eats fruit and gains one point in strength",
 	"poisonous fruit tree",
@@ -258,23 +354,23 @@
 	"jealousy",
 	"diamond pickaxe",
 	"mines diamond ore"];
-	
+
 	var killCauseAndEffect = [
-	"landmine", 
+	"landmine",
 	"random mine",
 	"bow",
 	"shoots",
 	"melee",
 	"kills",
-	"paintball", 
+	"paintball",
 	"brings one less paintball, so",
-	"basketball", 
+	"basketball",
 	"dunks on",
 	"octobrush",
 	"splats",
-	"fidget spinner", 
+	"fidget spinner",
 	"spins fidget spinner fatally at",
-	"assault rifle", 
+	"assault rifle",
 	"shoots",
 	"frisbee",
 	"decapitates",
@@ -282,22 +378,22 @@
 	"murders",
 	"Stalin mustache",
 	"gulag"];
-	
-	var shelter = 
+
+	var shelter =
 	["cave",
 	"tree",
 	"cardboard box",
 	"geometrically stable truss",
 	"House of the Seven Gables"];
-	
+
 	var cornucopia = [
-	"run", 
-	"supply", 
-	"weapon", 
-	"battle" 
+	"run",
+	"supply",
+	"weapon",
+	"battle"
 	];
-	
-	var sponsor = 
+
+	var sponsor =
 	["empty box",
 	"paintball",
 	"used Band-Aid",
@@ -314,8 +410,8 @@
 	"Agrawal star",
 	"Lapras",
 	"diamond pickaxe"];
-	
-	var misc = 
+
+	var misc =
 	["wanders around",
 	"picks flowers",
 	"heils Hitler",
@@ -340,7 +436,7 @@
 	"eats",
 	"attaches a measuring tape to a toaster",
 	"gains Disney Channel flo"];
-	
+
 	var injury = [
 	"gets a cold",
 	"gets the flu",
@@ -357,7 +453,7 @@
 	"gets crippling depression",
 	"tries to break the fourth wall",
 	"prank calls"];
-	
+
 	var injEffect = [
 	"bow",
 	"injures",
@@ -373,7 +469,7 @@
 	"spins fidget spinner nonfatally at",
 	"assault rifle",
 	"shoots and grazes"];
-	
+
 	var variousDeaths = [
 	"strangles",
 	"breaks",
@@ -392,21 +488,21 @@
 	"navy seals",
 	"unsafe dating",
 	"gets hit by a hurricane"];
-	
+
 	var doubleDeath = [
-	"strangles", 
-	"forgets to get the AED for", 
-	"gets nuked from orbit by", 
+	"strangles",
+	"forgets to get the AED for",
+	"gets nuked from orbit by",
 	"gets memed to death by",
 	"uses dank memes to kill"];
-	
+
 	var options = [
-	"weapons", 
-	"items", 
-	"use", 
-	"shelter", 
+	"weapons",
+	"items",
 	"use",
-	"misc", 
+	"shelter",
+	"use",
+	"misc",
 	"injury",
 	"use",
 	"death",
@@ -415,9 +511,9 @@
 	"use",
 	"injury",
 	"use"];
-	
-	
-	
+
+
+
 	var inum = itemsToFind.length;
 	var wnum = weapons.length;
 	var mnum = melee.length;
@@ -425,17 +521,17 @@
 	var cnum = cornucopia.length;
 	var spnum = sponsor.length;
 	var minum = misc.length;
-	
+
 	var pro = [];
 	var playerItems = [];
 	var playerInj = [];
-	
+
 	var onClick = function(){
 		mult = wow.checked;
 		num = document.getElementById("wow").value;
 		first.style.visibility = "hidden";
 		pressed = false;
-		
+
 		for (var i=0; i<num; i++){
 			var temp = document.createElement("div");
 			var label = document.createElement("label");
@@ -459,16 +555,16 @@
 			temp.appendChild(document.createElement("br"));
 			temp.appendChild(document.createElement("br"));
 			names.insertBefore(temp, names.children[names.children.length-1]);
-		} 
+		}
 	};
-	
+
 	function registerNames(){
 		allNames = [];
 		pro = [];
 		proPos = [];
 		var fields = document.getElementsByClassName("newNames");
 		var wowselect = document.getElementsByClassName("wowselect");
-		
+
 		for (var i=0; i<num; i++){
 			allNames.push(fields[i].value);
 			pro.push(wowselect[i].value);
@@ -503,10 +599,10 @@
 		}
 		names.style.visibility = "hidden";
 	}
-	
+
 	function deadHighlight(){
 		var spans = document.getElementsByClassName("wowdead");
-		
+
 		for (var i=0; i<num; i++){
 			if (!deathBools[i]){
 				spans[i].textContent = "Dead";
@@ -514,11 +610,11 @@
 			}
 		}
 	}
-	
+
 	function proceedToDay(){
 		var checkForWinner = declareWinner();
 		document.getElementById("dayNum").textContent = "Day " + dayCounter;
-		if (checkForWinner){	
+		if (checkForWinner){
 		}
 		else if (dayCounter === 0){
 			cornucopiaNow();
@@ -534,7 +630,7 @@
 			dayCounter++;
 		}
 	}
-	
+
 	function toDeaths(){
 		var deathCounter = 0;
 		var cannon = document.getElementById("cannon");
@@ -553,19 +649,19 @@
 				alreadyDead[i] = false;
 			}
 		}
-		
+
 		cannon.textContent = deathCounter + " cannon shots can be heard in the distance";
 		if (deathCounter === 1){
 			cannon.textContent = "1 cannon shot can be heard in the distance";
 		}
-		
+
 		temp.appendChild(p);
 		deaths.insertBefore(temp, deaths.children[deaths.childElementCount-1]);
 		corn.style.visibility = "hidden";
 		day.style.visibility = "hidden";
 		deaths.style.visibility = "visible";
 	}
-	
+
 	function toStats(){
 		var wowkills = document.getElementsByClassName("wowkills");
 		deadHighlight();
@@ -581,11 +677,11 @@
 		deaths.style.visibility = "hidden";
 		stats.style.visibility = "visible";
 	}
-	
+
 	function simulateDay(){
 		var done = [];
 		var fates = [];
-	
+
 		for (var i=0; i<num; i++){
 			if (deathBools[i]){
 				done.push(false);
@@ -594,7 +690,7 @@
 				done.push(true);
 			}
 		}
-		
+
 		while(done.indexOf(false) != -1){
 			var r = rand(num);
 			while (done[r]){
@@ -605,11 +701,11 @@
 					r++;
 				}
 			}
-		
+
 			done[r] = true;
-			
+
 			switch (options[rand(options.length)]){
-				case "weapons": 
+				case "weapons":
 					var w = rand(wnum);
 					var f = weapons[w].charAt(0);
 					var article = "a";
@@ -667,7 +763,7 @@
 						}
 						break;
 					}
-				case "use": 
+				case "use":
 					if (playerItems[r].length === 0){
 						done[r] = false;
 					}
@@ -1071,10 +1167,10 @@
 					}
 			}
 		}
-		
+
 		var temp = document.createElement("div");
 		var par = document.createElement("p");
-		
+
 		while (fates.length > 0){
 			par.appendChild(document.createTextNode(fates[0]));
 			par.appendChild(document.createElement("br"));
@@ -1083,24 +1179,24 @@
 			}
 			fates.pop();
 		}
-	
+
 		temp.appendChild(par);
 		day.insertBefore(temp, day.children[day.childElementCount-1]);
 		day.style.visibility = "visible";
 		stats.style.visibility = "hidden";
 	}
-	
+
 	function cornucopiaNow(){
 		var done = [];
 		var fates = [];
 		var notDone = 0;
-		
+
 		for (var i=0; i<num; i++){
 			done.push(false);
 			notDone++;
 		}
-		
-		
+
+
 		while (notDone != 0){
 			var r = rand(num);
 			if (done[r]){
@@ -1113,12 +1209,12 @@
 					}
 				}
 			}
-			
+
 			done[r] = true;
 			notDone--;
-			
+
 			switch(cornucopia[rand(cnum)]){
-				case "run": 
+				case "run":
 					fates.push(allNames[r] + " runs away from the Cornucopia.");
 					break;
 				case "supply":
@@ -1136,7 +1232,7 @@
 						playerItems[r][playerItems[r].length-1] = melee[z];
 					}
 					break;
-				case "battle":	
+				case "battle":
 					if (notDone === 0){
 						fates.push(allNames[r] + " runs away from the Cornucopia.");
 						break;
@@ -1183,24 +1279,24 @@
 					}
 			}
 		}
-			
+
 		var temp = document.createElement("div");
 		var p = document.createElement("p");
-			
+
 		for (var i=fates.length-1; i>=0; i--){
 			p.appendChild(document.createTextNode(fates.pop()));
 			p.appendChild(document.createElement("br"));
 		}
-			
+
 		temp.appendChild(p);
 		corn.insertBefore(temp, corn.children[corn.childElementCount-1]);
-		stats.style.visibility = "hidden";	
+		stats.style.visibility = "hidden";
 	}
-	
+
 	function rand(x){
 		return Math.floor(Math.random()*x);
 	}
-	
+
 	function injureOne(x){
 		if (playerInj[x]){
 			playerInj[x] = false;
@@ -1211,7 +1307,7 @@
 			numDeaths++;
 		}
 	}
-	
+
 	function injureTwo(x,y){
 		if (playerInj[y]){
 			playerInj[y] = false;
@@ -1222,11 +1318,11 @@
 			kills[x]++;
 		}
 	}
-	
+
 	function pleaseHeal(x){
 		playerInj[x] = true;
 	}
-	
+
 	function liveChampion(x){
 		var y = rand(num);
 		while (!deathBools[y] || y === x){
@@ -1239,40 +1335,40 @@
 		}
 		return y;
 	}
-	
+
 	function discardItem(x){
 		for (var i=0; i<playerItems[x].length-1; i++){
 			playerItems[x][i] = playerItems[x][i+1];
 		}
 		playerItems[x].pop();
 	}
-	
+
 	function xDies(x){
 		deathBools[x] = false;
 		numDeaths++;
 		playerInj[x] = true;
 	}
-	
+
 	function xKillsY(x,y){
 		deathBools[y] = false;
 		numDeaths++;
 		kills[x]++;
 		playerInj[y] = true;
 	}
-	
+
 	function dayClear(){
 		day.removeChild(day.children[day.childElementCount-2]);
 	}
-	
+
 	function declareWinner(){
 		var count = 0;
-		
+
 		for (var i=0; i<deathBools.length; i++){
 			if (deathBools[i]){
 				count++;
 			}
 		}
-		
+
 		if (count === 1){
 			document.getElementById("declare").innerHTML = "<strong>" + allNames[deathBools.indexOf(true)] + "</strong>";
 			if (kills[deathBools.indexOf(true)] === 1){
@@ -1289,11 +1385,11 @@
 			return false;
 		}
 	}
-	
+
 	function toSummary(){
 		var temp = document.createElement("div");
 		var p = document.createElement("p");
-		
+
 		for (var i=0; i<summary.length; i++){
 			p.appendChild(document.createTextNode(summary[i]));
 			p.appendChild(document.createElement("br"));
@@ -1303,14 +1399,14 @@
 		temp.appendChild(p);
 		temp.appendChild(h);
 		finalSum.insertBefore(temp, finalSum.children[finalSum.childElementCount-2]);
-		
+
 		finalSum.style.visibility = "visible";
 		winner.style.visibility = "hidden";
 	}
-	
+
 	function clearGames(){
 		allNames = [];
-		deathBools = [];	
+		deathBools = [];
 		kills = [];
 		alreadyDead = [];
 		pro = [];
@@ -1319,17 +1415,17 @@
 		playerInj = [];
 		dayClear();
 		dayCounter = 0;
-		
+
 		console.log(allNames);
-		
+
 		for (var i=0; i<num; i++){
 			names.removeChild(names.children[names.childElementCount-2]);
 		}
-		
+
 		first.style.visibility = "visible";
 		visibleStuff();
 	}
-	
+
 	function sameTributes(){
 		dayCounter = 0;
 		deathBools = [];
@@ -1340,7 +1436,7 @@
 		dayClear();
 		visibleStuff();
 	}
-	
+
 	function visibleStuff(){
 		stats.style.visibility = "visible";
 		names.style.visibility = "visible";
@@ -1349,13 +1445,13 @@
 		cannon.style.visibility = "visible";
 		winner.style.visibility = "hidden";
 		finalSum.style.visibility = "hidden";
-		
+
 		for (var i=0; i<num; i++){
 			stats.removeChild(stats.children[stats.childElementCount-1]);
 		}
-		
+
 		corn.removeChild(corn.children[corn.childElementCount-2]);
-			
+
 		finalSum.removeChild(finalSum.children[finalSum.childElementCount-3]);
 		summary = [];
 	}
