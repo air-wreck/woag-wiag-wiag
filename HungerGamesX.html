@@ -169,8 +169,7 @@
 	"fidget spinner", 
 	"assault rifle", 
 	"frisbee",
-	"tank",
-	"Stalin mustache"];
+	"tank"];
 	
 	var melee = 
 	["sword",
@@ -209,7 +208,8 @@
 	"unicorn",
 	"spiritual enlightenment in a Villanova brochure",
 	"Lapras",
-	"diamond pickaxe"];
+	"diamond pickaxe",
+	"Stalin mustache"];
 	
 	var causeAndEffect = 
 	["fruit tree",
@@ -632,17 +632,20 @@
 					var a = rand(2);
 					if (a === 0){
 						var q = rand(inum);
+						playerItems[r].push(itemsToFind[q]);
 						var f = itemsToFind[q].charAt(0);
 						var article = "a";
 						if (itemsToFind[q] === "Lapras"){
 							fates.push("A wild Lapras has appeared. " + allNames[r] + " has caught it!");
+						}
+						else if (itemsToFind[q] === "Stalin mustache"){
+							fates.push(allNames[r] + " has grown a Stalin mustache.");
 						}
 						else {
 							if (f === 'a' || f === 'e' || f === 'i' || f === 'o'){
 								article += "n";
 							}
 							fates.push(allNames[r] + " discovers " + article + " " + itemsToFind[q] + " lying on the ground.");
-							playerItems[r].push(itemsToFind[q]);
 						}
 						break;
 					}
