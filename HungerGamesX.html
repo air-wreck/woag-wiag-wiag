@@ -5,6 +5,9 @@
 	<link rel="shortcut icon" href="https://lc-www-live-s.legocdn.com/media/nxtlog/b956b340-2058-4da3-923c-57802f93e07a/440x330/HungerGames_Updated_CC.jpg">
 	<link type="text/css" rel="stylesheet" href="styles.css">
 	<script type="text/javascript" src="items.js"></script>
+
+
+
 </head>
 
 <body>
@@ -45,7 +48,6 @@
 		<div class="footer">
 			This is a <a href="https://github.com/air-wreck/woag-wiag-wiag">fork</a> of the <a href="https://github.com/adrian-thumbtack/woag-wiag-wiag">same simulator</a> made by Adrian Thamburaj. The original is hosted <a href="https://adrian-thumbtack.github.io/woag-wiag-wiag/HungerGamesX">here</a>.
 		</div>
-		<div class="filler"></div>
 		<div class="content" id="stats-content">
 			<h1>The Tributes</h1>
 			<button id="proceedOne" type="button" class="button">Proceed</button>
@@ -57,7 +59,6 @@
 		<div class="footer">
 			This is a <a href="https://github.com/air-wreck/woag-wiag-wiag">fork</a> of the <a href="https://github.com/adrian-thumbtack/woag-wiag-wiag">same simulator</a> made by Adrian Thamburaj. The original is hosted <a href="https://adrian-thumbtack.github.io/woag-wiag-wiag/HungerGamesX">here</a>.
 		</div>
-		<div class="filler"></div>
 		<div class="content" id="day-content">
 			<h2 id="dayNum">Day </h2>
 			<button id="proceedTwo" type="button" class="button">Proceed</button>
@@ -81,7 +82,6 @@
 		<div class="footer">
 			This is a <a href="https://github.com/air-wreck/woag-wiag-wiag">fork</a> of the <a href="https://github.com/adrian-thumbtack/woag-wiag-wiag">same simulator</a> made by Adrian Thamburaj. The original is hosted <a href="https://adrian-thumbtack.github.io/woag-wiag-wiag/HungerGamesX">here</a>.
 		</div>
-		<div class="filler"></div>
 		<div class="content" id="deaths-content">
 			<h2 id="cannon"> cannon shots can be heard in the distance</h2>
 			<h2>The following tributes have fallen:</h2>
@@ -136,6 +136,9 @@
 	var numDeaths = 0;
 	var proPos = [];
 	var finalSum = document.getElementById("summary");
+
+	//copy for restoration of original state upon game restart
+	var clean_install = document.body.innerHTML;
 
 	var inum = itemsToFind.length;
 	var wnum = weapons.length;
@@ -222,7 +225,7 @@
 			temp.appendChild(p);
 			temp.id = allNames[i];
 			temp.className = "champion";
-			stats.appendChild(temp);
+			document.getElementById("stats-content").appendChild(temp);
 		}
 		names.style.visibility = "hidden";
 	}
@@ -261,7 +264,8 @@
 	function toDeaths(){
 		var deathCounter = 0;
 		var cannon = document.getElementById("cannon");
-		var temp = document.createElement("div");
+		//var temp = document.createElement("div");
+		temp = document.getElementById("deaths-content");
 		var p = document.createElement("p");
 		for (var i=0; i<deathBools.length; i++){
 			if (!deathBools[i] && alreadyDead[i]){
@@ -282,8 +286,14 @@
 			cannon.textContent = "1 cannon shot can be heard in the distance";
 		}
 
-		temp.appendChild(p);
-		deaths.insertBefore(temp, deaths.children[deaths.childElementCount-1]);
+		//temp.appendChild(p);
+		temp.insertBefore(p, document.getElementById("proceedFour"));
+		/*
+		document.getElementById("deaths-content").appendChild(temp);
+		document.getElementById("deaths-content").insertBefore(temp, document.getElementById("deaths-content").children[document.getElementById("deaths-content").childElementCount-1]);
+		//deaths.insertBefore(temp, deaths.children[deaths.childElementCount-1]);
+		*/
+
 		corn.style.visibility = "hidden";
 		day.style.visibility = "hidden";
 		deaths.style.visibility = "visible";
@@ -300,7 +310,19 @@
 				wowkills[i].textContent = kills[i] + " Kills";
 			}
 		}
-		deaths.removeChild(deaths.children[deaths.childElementCount-2]);
+		/*
+		window.alert(document.getElementById("deaths-content").innerHTML);
+		for (var child in document.getElementById("deaths-content").children) {
+			window.alert(document.getElementById("deaths-content").children[child].innerHTML);
+		}
+		window.alert("removing child...");
+		document.getElementById("deaths-content").removeChild(document.getElementById("deaths-content").children[document.getElementById("deaths-content").childElementCount-1]);
+		window.alert(document.getElementById("deaths-content").innerHTML);
+		for (var child in document.getElementById("deaths-content").children) {
+			window.alert(document.getElementById("deaths-content").children[child].innerHTML);
+		}
+		*/
+		document.getElementById("deaths-content").removeChild(document.getElementById("deaths-content").children[document.getElementById("deaths-content").childElementCount-2]);
 		deaths.style.visibility = "hidden";
 		stats.style.visibility = "visible";
 	}
@@ -795,7 +817,8 @@
 			}
 		}
 
-		var temp = document.createElement("div");
+		//var temp = document.createElement("div");
+		temp = document.getElementById("day-content");
 		var par = document.createElement("p");
 
 		while (fates.length > 0){
@@ -808,7 +831,7 @@
 		}
 
 		temp.appendChild(par);
-		day.insertBefore(temp, day.children[day.childElementCount-1]);
+		//day.insertBefore(temp, day.children[day.childElementCount-1]);
 		day.style.visibility = "visible";
 		stats.style.visibility = "hidden";
 	}
@@ -907,7 +930,8 @@
 			}
 		}
 
-		var temp = document.createElement("div");
+		//var temp = document.createElement("div");
+		temp = document.getElementById("corn-content");
 		var p = document.createElement("p");
 
 		for (var i=fates.length-1; i>=0; i--){
@@ -916,7 +940,7 @@
 		}
 
 		temp.appendChild(p);
-		corn.insertBefore(temp, corn.children[corn.childElementCount-1]);
+		//corn.insertBefore(temp, corn.children[corn.childElementCount-1]);
 		stats.style.visibility = "hidden";
 	}
 
@@ -984,7 +1008,8 @@
 	}
 
 	function dayClear(){
-		day.removeChild(day.children[day.childElementCount-2]);
+		//day.removeChild(day.children[day.childElementCount-2]);
+		document.getElementById("day-content").removeChild(document.getElementById("day-content").children[document.getElementById("day-content").childElementCount - 1]);
 	}
 
 	function declareWinner(){
@@ -1013,8 +1038,9 @@
 		}
 	}
 
-	function toSummary(){
-		var temp = document.createElement("div");
+	function toSummary() {
+		//var temp = document.createElement("div");
+		temp = document.getElementById("summary-content");
 		var p = document.createElement("p");
 
 		for (var i=0; i<summary.length; i++){
@@ -1025,7 +1051,7 @@
 		h.appendChild(document.createTextNode(allNames[deathBools.indexOf(true)] + " is the champion!"));
 		temp.appendChild(p);
 		temp.appendChild(h);
-		finalSum.insertBefore(temp, finalSum.children[finalSum.childElementCount-2]);
+		//finalSum.insertBefore(temp, finalSum.children[finalSum.childElementCount-2]);
 
 		finalSum.style.visibility = "visible";
 		winner.style.visibility = "hidden";
@@ -1045,9 +1071,13 @@
 
 		console.log(allNames);
 
+		/*
 		for (var i=0; i<num; i++){
-			names.removeChild(names.children[names.childElementCount-2]);
+			document.getElementById("names-content").removeChild(document.getElementById("names-content").children[document.getElementById("names-content").childElementCount-2]);
 		}
+		*/
+
+		document.body.innerHTML = clean_install;
 
 		first.style.visibility = "visible";
 		visibleStuff();
