@@ -3,9 +3,19 @@
 	font-family: arial;
 }
 
+html, body {
+	background-color: black;
+	height: 100%;
+}
+
 select, option {
 	background-color: black;
 	outline-color: cyan;
+}
+
+#container {
+	min-height: 100%;
+	position: relative;
 }
 
 #start, #names, #stats, #day, #corn, #deaths, #winner, #summary {
@@ -49,10 +59,17 @@ select, option {
 .content {
 	width: 60%;
 	float: left;
+	padding-bottom: 20px;
 }
 
 .filler {
-	height: 20%;
+	height: 40%;
+	position: relative;
+}
+
+.padding {
+	height: 120px;
+	position: relative;
 }
 
 .header {
@@ -62,7 +79,11 @@ select, option {
 	color: white;
 	padding: 15px;
 	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
 	box-shadow: 0px 5px 20px #3a3a3a;
+	margin: 0px;
 }
 
 .footer {
@@ -72,8 +93,9 @@ select, option {
 	color: black;
 	padding: 15px;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
+	height: 20px;
 }
 
 .button {
